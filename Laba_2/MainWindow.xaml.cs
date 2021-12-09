@@ -45,7 +45,15 @@ namespace Laba_2
                 switch (res)
                 {
                     case MessageBoxResult.Yes:
-                        DownloadFile(@"..\..\thrlist.xlsx");
+                        try
+                        {
+                            DownloadFile(@"..\..\thrlist.xlsx");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Произошла ошибка. Попробуйте проверить доступ к интернету и все такое. Возможно, серв упал. Короче, попробуйте позже.\nСообщение ошибки: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            Environment.Exit(0);
+                        }
                         break;
                     case MessageBoxResult.No:
                         MessageBox.Show("Ну и ладно(\nНу и пожалуйста((", "(((", MessageBoxButton.OK);
@@ -78,16 +86,9 @@ namespace Laba_2
 
         public static void DownloadFile(string path) 
         {
-            try
+            using (WebClient client = new WebClient())
             {
-                using (WebClient client = new WebClient())
-                {
-                    client.DownloadFile("https://bdu.fstec.ru/files/documents/thrlist.xlsx", path);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                client.DownloadFile("https://bdu.fstec.ru/files/documents/thrlist.xlsx", path);
             }
         }
 
@@ -200,7 +201,7 @@ namespace Laba_2
                         i++;
                     }
                 }
-                MessageBox.Show($"Обновление прошло успешно! Обновлено записей: {changesAfter.Count}.", "Successful");
+                MessageBox.Show($"Обновление прошло успешно!\nОбновлено записей: {changesBefore.Count}\nДобавлено записей: {changesAfter.Count - changesBefore.Count}", "Successful");
                 Changes win = new Changes();
                 win.beforeGrid.ItemsSource = changesBefore;
                 win.afterGrid.ItemsSource = changesAfter;
