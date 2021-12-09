@@ -1,0 +1,19 @@
+﻿<Window x:Class="Laba_2.Changes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laba_2"
+        mc:Ignorable="d"
+        Title="Changes" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="beforeGrid" Grid.Column="0" AutoGeneratingColumn="Grid_AutoGeneratingColumn" Margin="10,31,6,10" ColumnWidth="*" IsReadOnly="True"/>
+        <DataGrid x:Name="afterGrid" Grid.Column="1" AutoGeneratingColumn="Grid_AutoGeneratingColumn" Margin="6,31,10,10" ColumnWidth="*" IsReadOnly="True"/>
+        <TextBlock HorizontalAlignment="Left" Grid.Column="0" Margin="15,1,0,0" TextWrapping="Wrap" Text="Before" VerticalAlignment="Top" Width="78" FontSize="22"/>
+        <TextBlock Margin="0,0,15,0" Grid.Column="1" TextWrapping="Wrap" Text="After" TextAlignment="Right" VerticalAlignment="Top" HorizontalAlignment="Right" Width="83" FontSize="22"/>
+    </Grid>
+</Window>
