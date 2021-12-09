@@ -8,7 +8,7 @@ namespace Laba_2
 {
     public class DataUnit
     {
-        public int id;
+        public int Id { get; set; }
         public string FormatId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -24,7 +24,7 @@ namespace Laba_2
 
         public DataUnit(int id, string name, string description, string source, string obj, string conf, string integr, string avail, DateTime dateOfChange)
         {
-            this.id = id;
+            Id = id;
             Name = name;
             Description = description;
             Source = source;
@@ -33,12 +33,12 @@ namespace Laba_2
             Integr = integr;
             Avail = avail;
             this.dateOfChange = dateOfChange;
-            FormatId = $"УБИ.{id}";
+            FormatId = $"УБИ.{Id}";
         }
 
         public override string ToString()
         {
-            return $"Id: {id}" + "\n\n" +
+            return $"Id: {Id}" + "\n\n" +
             $"Name: {Name}" + "\n\n" +
             $"Description: {Description}" + "\n\n" +
             $"Source: {Source}" + "\n\n" +

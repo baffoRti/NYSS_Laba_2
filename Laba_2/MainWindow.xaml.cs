@@ -162,7 +162,7 @@ namespace Laba_2
                     int i = 3;
                     while (ws.Cell($"A{i}").GetValue<string>() != "")
                     {
-                        if (ws.Cell($"A{i}").GetValue<int>() > dataList.Last().id)
+                        if (ws.Cell($"A{i}").GetValue<int>() > dataList.Last().Id)
                         {
                             DataUnit tmp = new DataUnit
                             (
@@ -176,16 +176,14 @@ namespace Laba_2
                                 ws.Cell($"H{i}").GetValue<string>(),
                                 ws.Cell($"J{i}").GetValue<DateTime>()
                             );
-                            DataUnit tmp1 = new DataUnit(ws.Cell($"A{i}").GetValue<int>(), "", "", "", "", "", "", "", ws.Cell($"J{i}").GetValue<DateTime>());
                             dataList.Add(tmp);
-                            changesBefore.Add(tmp1);
                             changesAfter.Add(tmp);
                         }
                         else if (ws.Cell($"J{i}").GetValue<DateTime>() != dataList[i-3].dateOfChange)
                         {
                             DataUnit tmp = new DataUnit
                             (
-                                Convert.ToInt32(ws.Cell($"A{i}").GetValue<string>()),
+                                ws.Cell($"A{i}").GetValue<int>(),
                                 ws.Cell($"B{i}").GetValue<string>(),
                                 ws.Cell($"C{i}").GetValue<string>(),
                                 ws.Cell($"D{i}").GetValue<string>(),
