@@ -39,7 +39,7 @@ namespace Laba_2
 
         public static void InitializeDataList()
         {
-            if (!File.Exists(@"..\..\thrlist.xlsx"))
+            if (!File.Exists(@"thrlist.xlsx"))
             {
                 MessageBoxResult res = MessageBox.Show("Локальной базы данных не существует.\nХотите скачать?", "Attention!!!!!!!!!!!!", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
                 switch (res)
@@ -47,7 +47,7 @@ namespace Laba_2
                     case MessageBoxResult.Yes:
                         try
                         {
-                            DownloadFile(@"..\..\thrlist.xlsx");
+                            DownloadFile(@"thrlist.xlsx");
                         }
                         catch (Exception ex)
                         {
@@ -61,7 +61,7 @@ namespace Laba_2
                         break;
                 }
             }
-            using (XLWorkbook book = new XLWorkbook(@"..\..\thrlist.xlsx"))
+            using (XLWorkbook book = new XLWorkbook(@"thrlist.xlsx"))
             {
                 var ws = book.Worksheet(1);
                 int i = 3;
@@ -140,24 +140,24 @@ namespace Laba_2
         {
             try
             {
-                DownloadFile(@"..\..\tmp.xlsx");
+                DownloadFile(@"tmp.xlsx");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Произошла ошибка. Попробуйте проверить доступ к интернету и все такое. Возможно, серв упал. Короче, попробуйте позже.\nСообщение ошибки: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (HashCompare(@"..\..\thrlist.xlsx", @"..\..\tmp.xlsx"))
+            if (HashCompare(@"thrlist.xlsx", @"tmp.xlsx"))
             {
                 MessageBox.Show("Изменений обнаружено не было.", "Refresh");
-                File.Delete(@"..\..\tmp.xlsx");
+                File.Delete(@"tmp.xlsx");
                 return;
             }
             else
             {
                 List<DataUnit> changesBefore = new List<DataUnit>();
                 List<DataUnit> changesAfter = new List<DataUnit>();
-                using (XLWorkbook book = new XLWorkbook(@"..\..\tmp.xlsx"))
+                using (XLWorkbook book = new XLWorkbook(@"tmp.xlsx"))
                 {
                     var ws = book.Worksheet(1);
                     int i = 3;
@@ -209,9 +209,9 @@ namespace Laba_2
                 bigGridPages = new Paging(dataList);
                 bigGrid.ItemsSource = bigGridPages.pages[0];
                 currentPageText.Text = $"Current page: {bigGridPages.CurrentPage + 1}";
-                File.Delete(@"..\..\thrlist.xlsx");
-                File.Copy(@"..\..\tmp.xlsx", @"..\..\thrlist.xlsx");
-                File.Delete(@"..\..\tmp.xlsx");
+                File.Delete(@"thrlist.xlsx");
+                File.Copy(@"tmp.xlsx", @"thrlist.xlsx");
+                File.Delete(@"tmp.xlsx");
             }
         }
 
