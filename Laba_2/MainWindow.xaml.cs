@@ -107,7 +107,7 @@ namespace Laba_2
                     col.ElementStyle = style;
                     break;
                 default:
-                    col.Visibility = Visibility.Hidden;
+                    col.Visibility = Visibility.Collapsed;
                     break;
             }
         }

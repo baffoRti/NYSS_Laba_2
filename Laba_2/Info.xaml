@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Laba_2"
         mc:Ignorable="d"
         Title="Info" Height="450" Width="800">
-    <TextBlock x:Name="dataText" Margin="10,10,10,10" TextWrapping="Wrap" Text="TextBlock"/>
-
+    <ScrollViewer>
+        <TextBlock x:Name="dataText" Margin="10,10,10,10" TextWrapping="Wrap" Text="TextBlock"/>
+    </ScrollViewer>
 </Window>
